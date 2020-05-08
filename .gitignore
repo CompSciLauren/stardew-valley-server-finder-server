@@ -9,5 +9,5 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
-server/config/*
 package-lock.json
+.env
