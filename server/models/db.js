@@ -4,6 +4,7 @@ const dbConfig = require('../config/db.config.js');
 let connection;
 // Create a connection to the database
 if (process.env.JAWSDB_URL) {
+  console.log('Using JawsDB');
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
   connection = mysql.createConnection({

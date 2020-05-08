@@ -21,8 +21,11 @@ require('./routes/playerServer.routes.js')(app);
 require('./routes/playerStatus.routes.js')(app);
 require('./routes/server.routes.js')(app);
 require('./routes/serverInviteCode.routes.js')(app);
+
+const PORT = process.env.PORT || 8081;
+
 // set port, listen for requests
-app.listen(8081, () => {
+app.listen(PORT, () => {
   console.log('Server is running on port 8081.');
 });
 
