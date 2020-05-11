@@ -23,13 +23,11 @@ exports.create = (req, res) => {
   console.log(
     '%s,%s,%s,%s,%s,%s,%s,%s',
     mod.id,
-    mod.username,
-    mod.timezone,
-    mod.num_players,
-    mod.platform,
-    mod.mods,
-    mod.notes,
-    mod.dotes_modified
+    mod.name,
+    mod.desc,
+    mod.creator,
+    mod.contact,
+    mod.lastupdate,
   );
 
   // Save Mod in the database
