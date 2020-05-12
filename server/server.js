@@ -22,7 +22,7 @@ require('./routes/playerStatus.routes.js')(app);
 require('./routes/server.routes.js')(app);
 require('./routes/serverInviteCode.routes.js')(app);
 require('./routes/game_mod.routes.js')(app);
-require('./routes/playerModsList.routes.js')(app);
+require('./routes/modPlayerList.routes.js')(app);
 
 const PORT = process.env.PORT || 8081;
 

@@ -1,7 +1,7 @@
 // Mods Controller
 //
 
-const PlayerList = require('../models/playerModsList.model.js');
+const PlayerList = require('../models/modPlayerList.model.js');
 
 exports.getPlayerwithModList = (req, res) => {
     console.log(req.params.id);
