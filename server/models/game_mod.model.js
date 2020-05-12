@@ -77,4 +77,17 @@ Game_Mod.remove = (id, result) => {
   });
 };
 
+Game_Mod.getPlayerList = (id, result) => {
+  sql.query('SELECT username, timezone, num_players, platform, mods, notes FROM player, game_mod WHERE id = ?, mods = id AND mods > 0', id, (err, res) => {
+    if(err) {
+      console.log('error: ', err);
+      result(null, err);
+      return;
+    }
+
+    console.log('ModList: ', res);
+    result(null, res);
+  });
+};
+
 module.exports = Game_Mod;
