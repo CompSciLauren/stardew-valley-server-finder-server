@@ -4,16 +4,16 @@
 const sql = require('./db.js');
 
 // constructor
-const Mod = function(mod) {
-  this.id = mod.id;
-  this.name = mod.username;
-  this.desc = mod.desc;
-  this.creator = mod.creator;
-  this.contact = mod.contact;
-  this.lastupdate = mod.lastupdate;
+const Game_Mod = function(game_mod) {
+  this.id = game_mod.id;
+  this.name = game_mod.username;
+  this.desc = game_mod.desc;
+  this.creator = game_mod.creator;
+  this.contact = game_mod.contact;
+  this.lastupdate = game_mod.lastupdate;
 };
 
-Mod.create = (newMod, result) => {
+Game_Mod.create = (newMod, result) => {
   sql.query('INSERT INTO mod SET ?', newMod, (err, res) => {
     if (err) {
       console.log('error: ', err);
@@ -26,7 +26,7 @@ Mod.create = (newMod, result) => {
   });
 };
 
-Mod.findByID = (ModId, result) => {
+Game_Mod.findByID = (ModId, result) => {
   sql.query(`SELECT * FROM mod WHERE id = ?`, ModId, (err, res) => {
     if (err) {
       console.log('error: ', err);
@@ -45,7 +45,7 @@ Mod.findByID = (ModId, result) => {
   });
 };
 
-Mod.getAll = result => {
+Game_Mod.getAll = result => {
   sql.query('SELECT * FROM mod', (err, res) => {
     if (err) {
       console.log('error: ', err);
@@ -58,7 +58,7 @@ Mod.getAll = result => {
   });
 };
 
-Mod.remove = (id, result) => {
+Game_Mod.remove = (id, result) => {
   sql.query('DELETE FROM mod WHERE id = ?', id, (err, res) => {
     if (err) {
       console.log('error: ', err);
@@ -77,4 +77,4 @@ Mod.remove = (id, result) => {
   });
 };
 
-module.exports = Mod;
+module.exports = Game_Mod;

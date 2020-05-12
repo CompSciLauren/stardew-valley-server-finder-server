@@ -1,7 +1,7 @@
 // Mods Controller
 //
 
-const Mod = require('../models/mod.model.js');
+const Game_Mod = require('../models/game_mod.model.js');
 
 // Create and Save a new mod
 exports.create = (req, res) => {
@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     });
   }
   console.log(req.body);
-  const mod = new mod({
+  const game_mod = new game_mod({
     id: req.body.id,
     name:  req.body.name,
     desc: req.body.desc,
@@ -22,16 +22,16 @@ exports.create = (req, res) => {
   });
   console.log(
     '%s,%s,%s,%s,%s,%s,%s,%s',
-    mod.id,
-    mod.name,
-    mod.desc,
-    mod.creator,
-    mod.contact,
-    mod.lastupdate,
+    game_mod.id,
+    game_mod.name,
+    game_mod.desc,
+    game_mod.creator,
+    game_mod.contact,
+    game_mod.last_update,
   );
 
   // Save Mod in the database
-  Mod.create(Mod, (err, data) => {
+  Game_Mod.create(Game_Mod, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || 'Some error occurred while creating the Mod.',
@@ -42,7 +42,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Mods from the database.
 exports.findAll = (req, res) => {
-  Mod.getAll((err, data) => {
+  Game_Mod.getAll((err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || 'Some error occurred while retrieving Mods.',
@@ -54,7 +54,7 @@ exports.findAll = (req, res) => {
 // Find a single Mod with a Id
 exports.findMod = (req, res) => {
   console.log('look:', req.params.id);
-  Mod.findByID(req.params.id, (err, data) => {
+  Game_Mod.findByID(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === 'not_found') {
         res.status(404).send({
@@ -72,7 +72,7 @@ exports.findMod = (req, res) => {
 // Delete a Mod with the specified id
 exports.delete = (req, res) => {
   console.log(req.params.id);
-  Mod.remove(req.params.id, (err, data) => {
+  Game_Mod.remove(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === 'not_found') {
         res.status(404).send({
