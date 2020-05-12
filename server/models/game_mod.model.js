@@ -6,7 +6,7 @@ const sql = require('./db.js');
 // constructor
 const Game_Mod = function(game_mod) {
   this.id = game_mod.id;
-  this.name = game_mod.username;
+  this.name = game_mod.name;
   this.desc = game_mod.desc;
   this.creator = game_mod.creator;
   this.contact = game_mod.contact;
