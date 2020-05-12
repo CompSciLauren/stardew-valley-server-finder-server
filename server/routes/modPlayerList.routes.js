@@ -1,7 +1,7 @@
 // PlayerList route
 module.exports = (app) => {
 
-    const player_mod = require('../controllers/playerModsList.controller.js');
-    app.get('/api/player_mods/:id', player_mod.getPlayerwithModList);
+    const mod_players = require('../controllers/modPlayerList.controller.js');
+    app.get('/api/mod_players/:id', mod_players.getPlayerwithModList);
     
   };
