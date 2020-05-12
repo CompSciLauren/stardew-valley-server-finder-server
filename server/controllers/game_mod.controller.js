@@ -18,7 +18,7 @@ exports.create = (req, res) => {
     desc: req.body.desc,
     creator: req.body.creator,
     contact: req.body.contact,
-    last_update: req.body.lastupdate,
+    lastupdate: req.body.lastupdate,
   });
   console.log(
     '%s,%s,%s,%s,%s,%s,%s,%s',
@@ -27,7 +27,7 @@ exports.create = (req, res) => {
     game_mod.desc,
     game_mod.creator,
     game_mod.contact,
-    game_mod.last_update,
+    game_mod.lastupdate,
   );
 
   // Save Mod in the database
