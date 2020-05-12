@@ -22,7 +22,7 @@ Game_Mod.create = (newMod, result) => {
     }
 
     console.log('created Mod: ', { id: res.insertId, ...newMod });
-    result(null, { id: res.insertId, ...nMod });
+    result(null, { id: res.insertId, ...newMod });
   });
 };
 
