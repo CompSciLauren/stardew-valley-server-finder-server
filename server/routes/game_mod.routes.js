@@ -11,7 +11,7 @@ module.exports = (app) => {
     app.get('/api/game_mod', game_mod.findAll);
   
     // Retrieve a single Customer with id
-    app.get('/api/game_mod/:id', game_mod.findmod);
+    app.get('/api/game_mod/:id', game_mod.findMod);
   
     // Delete a Customer with id
     app.delete('/api/game_mod/:id', game_mod.delete);
