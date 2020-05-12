@@ -31,7 +31,7 @@ exports.create = (req, res) => {
     pplayer.platform,
     pplayer.mods,
     pplayer.notes,
-    pplayer.dotes_modified
+    pplayer.date_modified
   );
 
   // Save Player in the database
