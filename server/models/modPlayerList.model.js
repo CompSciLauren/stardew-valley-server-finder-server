@@ -3,12 +3,12 @@ const sql = require('./db.js');
 
 // constructor
 const PlayerList = function(listItem) {
-  this.username = listItem.id;
-  this.timezone = listItem.name;
-  this.num_players = listItem.desc;
-  this.platform = listItem.creator;
-  this.mods = listItem.contact;
-  this.notes = listItem.lastupdate;
+  this.username = listItem.username;
+  this.timezone = listItem.timezone;
+  this.num_players = listItem.num_players;
+  this.platform = listItem.platform;
+  this.mods = listItem.mods;
+  this.notes = listItem.notes;
 };
 
 PlayerList.getPlayerList = (id, result) => {
