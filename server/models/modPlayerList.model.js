@@ -14,8 +14,7 @@ const PlayerList = function(listItem) {
 PlayerList.getPlayerList = (id, result) => {
   var xo = 'SELECT username, timezone, num_players, platform, mods, notes FROM player, game_mod WHERE id = ';
   var yo = ', mods = id AND mods > 0';
-  var test = xo;
-  test.concat(id, yo);
+  var test = xo + id + yo;
   sql.query(test, (err, res) => {
     if(err) {
       console.log('error: ', err);
