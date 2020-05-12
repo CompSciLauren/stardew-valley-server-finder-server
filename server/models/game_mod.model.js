@@ -14,7 +14,7 @@ const Game_Mod = function(game_mod) {
 };
 
 Game_Mod.create = (newMod, result) => {
-  sql.query('INSERT INTO mod SET ?', newMod, (err, res) => {
+  sql.query('INSERT INTO game_mod SET ?', newMod, (err, res) => {
     if (err) {
       console.log('error: ', err);
       result(err, null);
@@ -27,7 +27,7 @@ Game_Mod.create = (newMod, result) => {
 };
 
 Game_Mod.findByID = (ModId, result) => {
-  sql.query(`SELECT * FROM mod WHERE id = ?`, ModId, (err, res) => {
+  sql.query(`SELECT * FROM game_mod WHERE id = ?`, ModId, (err, res) => {
     if (err) {
       console.log('error: ', err);
       result(err, null);
@@ -46,7 +46,7 @@ Game_Mod.findByID = (ModId, result) => {
 };
 
 Game_Mod.getAll = result => {
-  sql.query('SELECT * FROM mod', (err, res) => {
+  sql.query('SELECT * FROM game_mod', (err, res) => {
     if (err) {
       console.log('error: ', err);
       result(null, err);
@@ -59,7 +59,7 @@ Game_Mod.getAll = result => {
 };
 
 Game_Mod.remove = (id, result) => {
-  sql.query('DELETE FROM mod WHERE id = ?', id, (err, res) => {
+  sql.query('DELETE FROM game_mod WHERE id = ?', id, (err, res) => {
     if (err) {
       console.log('error: ', err);
       result(null, err);
