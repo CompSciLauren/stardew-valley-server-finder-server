@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     lastupdate: req.body.lastupdate,
   });
   console.log(
-    '%s,%s,%s,%s,%s,%s,%s,%s',
+    '%s,%s,%s,%s,%s,%s',
     game_mod.id,
     game_mod.name,
     game_mod.desc,
