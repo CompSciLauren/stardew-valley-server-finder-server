@@ -13,7 +13,7 @@ const PlayerList = function(listItem) {
 
 PlayerList.getPlayerList = (id, result) => {
   var xo = 'SELECT username, timezone, num_players, platform, mods, notes FROM player, game_mod WHERE game_mod.id = ';
-  var yo = 'AND mods = game_mod.id AND mods > 0';
+  var yo = ' AND mods = game_mod.id';
   var test = xo + id + yo;
   sql.query(test, (err, res) => {
     if(err) {
