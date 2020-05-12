@@ -17,6 +17,8 @@ module.exports = (app) => {
     app.delete('/api/game_mod/:id', game_mod.delete);
 
     //Get the players that use the mod
+    /*
     app.getplayer('/api/game_mod/:id', game_mod.getPlayerwithModList);
+    */
   };
   

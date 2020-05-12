@@ -87,6 +87,7 @@ exports.delete = (req, res) => {
   });
 };
 
+/*
 exports.getPlayerwithModList = (req, res) => {
   console.log(req.params.id);
   Game_Mod.getPlayerList(req.params.id, (err, data) => {
@@ -102,4 +103,4 @@ exports.getPlayerwithModList = (req, res) => {
       }
     }else res.send(data);
   });
-};
+};*/
