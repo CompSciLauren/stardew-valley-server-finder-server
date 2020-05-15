@@ -45,12 +45,16 @@ Player.updateUsername = (username, playerId, result) => {
 
 Player.findByID = (PlayerId, result) => {
   sql.query(
-    `SELECT id2 as id3, username, timezone, num_players, platform.display as 'platform', mods, notes, status FROM (SELECT id as id2, username, timezone, num_players, platform, mods, notes, player_status.status_id as status FROM player
+    `SELECT id4, username, timezone, num_players, platform, game_mod.name, notes, status FROM (SELECT id3 as id4, username, timezone, num_players, platform, CAST(mods AS SIGNED) as mods, notes, status.display as status FROM (SELECT id2 as id3, username, timezone, num_players, platform.display as 'platform', mods, notes, status FROM (SELECT id as id2, username, timezone, num_players, platform, mods, notes, player_status.status_id as status FROM player
     JOIN player_status
     ON player.id = player_status.player_id
     WHERE id = ?) as P
-   JOIN platform
-   ON P.platform = platform.id`,
+    JOIN platform
+    ON P.platform = platform.id) as P1
+   JOIN status
+   ON status.id = P1.status) as P2
+   JOIN game_mod
+   ON P2.mods = game_mod.id`,
     PlayerId,
     (err, res) => {
       if (err) {
