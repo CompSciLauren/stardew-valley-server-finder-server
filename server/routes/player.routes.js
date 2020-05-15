@@ -7,6 +7,9 @@ module.exports = (app) => {
   // Create a new player
   app.post('/api/player', player.create);
 
+  // Update a player's username
+  app.post('/api/player/:id', player.updateUsername);
+
   // Retrieve all players
   app.get('/api/player', player.findAll);
 

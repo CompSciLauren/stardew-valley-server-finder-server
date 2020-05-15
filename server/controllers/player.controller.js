@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     });
   }
   console.log(req.body);
-  const pplayer = new pplayer({
+  const player = new player({
     id: req.body.id,
     username: req.body.username,
     timezone: req.body.timezone,
@@ -42,6 +42,29 @@ exports.create = (req, res) => {
           err.message || 'Some error occurred while creating the Player.',
       });
     else res.send(data);
+  });
+};
+
+// Update player's username
+exports.updateUsername = (req, res) => {
+  Player.updateUsername(req.body.username, req.body.id, (err, data) => {
+    if (err) {
+      if (err.kind === 'not_found') {
+        res.status(404).send({
+          message: `No User found with ID ${req.params.id}.`,
+        });
+      } else {
+        res.status(500).send({
+          message:
+            'Error retrieving User with ID ' +
+            req.params.user_id +
+            '. Err Code: ' +
+            err,
+        });
+      }
+    } else {
+      res.send(data);
+    }
   });
 };
 

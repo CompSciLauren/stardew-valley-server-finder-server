@@ -28,6 +28,21 @@ Player.create = (newPlayer, result) => {
   });
 };
 
+Player.updateUsername = (username, playerId, result) => {
+  sql.query(
+    'UPDATE player SET username = ? WHERE id = ?',
+    [username, playerId],
+    (err, res) => {
+      if (err) {
+        console.log('error: ', err);
+        result(err, null);
+        return;
+      }
+      result(null, res);
+    }
+  );
+};
+
 Player.findByID = (PlayerId, result) => {
   sql.query(
     `SELECT id, username, timezone, num_players, platform, mods, notes, player_status.status_id FROM player
