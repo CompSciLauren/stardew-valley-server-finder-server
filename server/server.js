@@ -23,6 +23,7 @@ require('./routes/server.routes.js')(app);
 require('./routes/serverInviteCode.routes.js')(app);
 require('./routes/game_mod.routes.js')(app);
 require('./routes/modPlayerList.routes.js')(app);
+require('./routes/login.routes.js')(app);
 
 const PORT = process.env.PORT || 8081;
 
