@@ -66,8 +66,8 @@ Player.findByID = (PlayerId, result) => {
       }
 
       if (res.length) {
-        res[0].statuses = res.map((player) => player.status_id);
-        delete res[0].status_id;
+        res[0].statuses = res.map((player) => player.status);
+        delete res[0].status;
         console.log('found Player: ', res[0]);
         result(null, res[0]);
         return;
