@@ -30,4 +30,19 @@ Login.validateCredentials = (username, password, cb) => {
   );
 };
 
+Login.updatePassword = (password, playerId, result) => {
+  sql.query(
+    'UPDATE login SET password = ? WHERE id = ?',
+    [password, playerId],
+    (err, res) => {
+      if (err) {
+        console.log('error: ', err);
+        result(err, null);
+        return;
+      }
+      result(null, res);
+    }
+  );
+};
+
 module.exports = Login;

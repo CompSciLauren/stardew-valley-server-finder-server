@@ -30,3 +30,26 @@ exports.validateCredentials = (req, res) => {
     }
   });
 };
+
+// Update player's password
+exports.updatePassword = (req, res) => {
+  Login.updatePassword(req.body.password, req.body.id, (err, data) => {
+    if (err) {
+      if (err.kind === 'not_found') {
+        res.status(404).send({
+          message: `No User found with ID ${req.params.id}.`,
+        });
+      } else {
+        res.status(500).send({
+          message:
+            'Error retrieving User with ID ' +
+            req.params.user_id +
+            '. Err Code: ' +
+            err,
+        });
+      }
+    } else {
+      res.send(data);
+    }
+  });
+};
