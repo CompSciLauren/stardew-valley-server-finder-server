@@ -4,7 +4,7 @@
 const sql = require('./db.js');
 
 // constructor
-const Player = function(player) {
+const Player = function (player) {
   this.id = player.id;
   this.username = player.username;
   this.timezone = player.timezone;
@@ -29,25 +29,34 @@ Player.create = (newPlayer, result) => {
 };
 
 Player.findByID = (PlayerId, result) => {
-  sql.query(`SELECT * FROM player WHERE id = ?`, PlayerId, (err, res) => {
-    if (err) {
-      console.log('error: ', err);
-      result(err, null);
-      return;
-    }
+  sql.query(
+    `SELECT id, username, timezone, num_players, platform, mods, notes, player_status.status_id FROM player
+    JOIN player_status
+    ON player.id = player_status.player_id
+    WHERE id = ?`,
+    PlayerId,
+    (err, res) => {
+      if (err) {
+        console.log('error: ', err);
+        result(err, null);
+        return;
+      }
 
-    if (res.length) {
-      console.log('found Player: ', res[0]);
-      result(null, res[0]);
-      return;
-    }
+      if (res.length) {
+        res[0].statuses = res.map((player) => player.status_id);
+        delete res[0].status_id;
+        console.log('found Player: ', res[0]);
+        result(null, res[0]);
+        return;
+      }
 
-    // not found Player with the id
-    result({ kind: 'not_found' }, null);
-  });
+      // not found Player with the id
+      result({ kind: 'not_found' }, null);
+    }
+  );
 };
 
-Player.getAll = result => {
+Player.getAll = (result) => {
   sql.query('SELECT * FROM player', (err, res) => {
     if (err) {
       console.log('error: ', err);

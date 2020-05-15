@@ -14,7 +14,7 @@ exports.create = (req, res) => {
   console.log(req.body);
   const pplayer = new pplayer({
     id: req.body.id,
-    username:  req.body.username,
+    username: req.body.username,
     timezone: req.body.timezone,
     num_players: req.body.num_players,
     platform: req.body.platform,
@@ -38,7 +38,8 @@ exports.create = (req, res) => {
   Player.create(Player, (err, data) => {
     if (err)
       res.status(500).send({
-        message: err.message || 'Some error occurred while creating the Player.',
+        message:
+          err.message || 'Some error occurred while creating the Player.',
       });
     else res.send(data);
   });
@@ -57,7 +58,6 @@ exports.findAll = (req, res) => {
 
 // Find a single Player with a Id
 exports.findPlayer = (req, res) => {
-  console.log('look:', req.params.id);
   Player.findByID(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === 'not_found') {
