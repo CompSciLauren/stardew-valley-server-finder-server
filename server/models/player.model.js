@@ -48,7 +48,7 @@ Player.findByID = (PlayerId, result) => {
     `SELECT id3 as id, username, timezone, num_players, platform, game_mod.name, notes, status FROM (SELECT id2 as id3, username, timezone, num_players, platform.display as 'platform', mods, notes, status FROM (SELECT id as id2, username, timezone, num_players, platform, mods, notes, player_status.status_id as status FROM player
     JOIN player_status
     ON player.id = player_status.player_id
-    WHERE id = 1) as P
+    WHERE id = ?) as P
    JOIN platform
    ON P.platform = platform.id) as P2
    JOIN game_mod
