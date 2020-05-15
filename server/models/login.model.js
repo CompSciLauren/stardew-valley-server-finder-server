@@ -9,7 +9,7 @@ const Login = function (login) {
 
 Login.validateCredentials = (username, password, cb) => {
   sql.query(
-    'SELECT id, username FROM login WHERE username = ? AND password = ? LIMIT 1',
+    'SELECT login.id, player.username FROM login, player WHERE player.username = ? AND login.password = ? LIMIT 1',
     [username, password],
     (err, res) => {
       if (err) {
